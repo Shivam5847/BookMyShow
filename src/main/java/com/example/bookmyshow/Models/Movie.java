@@ -8,5 +8,5 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Movie extends BaseModel{
-    private int title;
+    private String title;
 }
