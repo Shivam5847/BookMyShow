@@ -7,10 +7,7 @@ import com.example.bookmyshow.Models.Theatre;
 import com.example.bookmyshow.Repository.ScreenRepository;
 import com.example.bookmyshow.Repository.SeatRepository;
 import com.example.bookmyshow.Repository.TheatreRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.swing.text.html.Option;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -37,8 +34,8 @@ public class TheatreService {
         }
 
         public Screen addScreen(Theatre theatre,String screen_name){
-            Optional<Screen> optionalScreen=screenRepository.findByName(screen_name);
-            if(!optionalScreen.isEmpty()) return optionalScreen.get();
+            Optional<Screen> optionalScreen=screenRepository.findByNameAndAndTheatre(screen_name,theatre);
+            if(!optionalScreen.isEmpty() && optionalScreen.get().getTheatre().getName().equals(theatre.getName())) return optionalScreen.get();
               String screen_id = UUID.randomUUID().toString();
               Screen screen=new Screen(screen_id,screen_name,theatre);
                return screenRepository.save(screen);

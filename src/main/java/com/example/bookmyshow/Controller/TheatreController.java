@@ -1,8 +1,8 @@
 package com.example.bookmyshow.Controller;
 
-import com.example.bookmyshow.DTO.ScreenAddRequestDTO;
-import com.example.bookmyshow.DTO.SeatAddRequestDTO;
-import com.example.bookmyshow.DTO.TheatreAddRequestDTO;
+import com.example.bookmyshow.DTO.RequestDto.ScreenAddRequestDTO;
+import com.example.bookmyshow.DTO.RequestDto.SeatAddRequestDTO;
+import com.example.bookmyshow.DTO.RequestDto.TheatreAddRequestDTO;
 import com.example.bookmyshow.Models.Screen;
 import com.example.bookmyshow.Models.Seat;
 import com.example.bookmyshow.Models.Theatre;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/theatre")
+@RequestMapping("/bms/theatre")
 public class TheatreController {
         private final TheatreService theatreService;
         private final TheatreRepository theatreRepository;
@@ -25,7 +25,7 @@ public class TheatreController {
             this.screenRepository = screenRepository;
         }
 
-         @PostMapping("/add")
+         @PostMapping("/addTheatre")
          public Theatre addTheatre(@RequestBody TheatreAddRequestDTO theatreAddRequestDTO) {
                   return theatreService.addTheatre(theatreAddRequestDTO.getTheatre_name());
         }

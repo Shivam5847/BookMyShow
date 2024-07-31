@@ -1,9 +1,8 @@
 package com.example.bookmyshow.Controller;
 
-import com.example.bookmyshow.DTO.ShowAddRequestDTO;
+import com.example.bookmyshow.DTO.RequestDto.ShowAddRequestDTO;
 import com.example.bookmyshow.Models.Movie;
 import com.example.bookmyshow.Models.Screen;
-import com.example.bookmyshow.Models.Show;
 import com.example.bookmyshow.Repository.MovieRepository;
 import com.example.bookmyshow.Repository.ScreenRepository;
 import com.example.bookmyshow.Service.ShowService;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/show")
+@RequestMapping("/bms/show")
 public class ShowController {
     private ScreenRepository screenRepository;
     private MovieRepository movieRepository;
@@ -28,7 +27,7 @@ public class ShowController {
         this.showService = showService;
 
     }
-    @PostMapping("/add")
+    @PostMapping("/addShow")
     public String addshow(@RequestBody ShowAddRequestDTO showAddRequestDTO){
         Optional<Screen> optionalScreen = screenRepository.findById(showAddRequestDTO.getScreenId());
         Optional<Movie> optionalMovie = movieRepository.findById(showAddRequestDTO.getMovieId());

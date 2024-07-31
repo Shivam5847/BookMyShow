@@ -5,13 +5,21 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Date;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 public class ShowSeat extends BaseModel{
+    public ShowSeat(Show show,Seat seat) {
+        this.show = show;
+        this.seat = seat;
+        this.showSeatStatus=ShowSeatStatus.EMPTY;
+        this.blockedAt=null;
+    }
     @ManyToOne
     private Show show;
     @ManyToOne

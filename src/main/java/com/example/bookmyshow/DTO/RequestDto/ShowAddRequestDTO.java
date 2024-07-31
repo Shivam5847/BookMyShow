@@ -1,4 +1,4 @@
-package com.example.bookmyshow.DTO;
+package com.example.bookmyshow.DTO.RequestDto;
 
 import lombok.Getter;
 import lombok.Setter;
