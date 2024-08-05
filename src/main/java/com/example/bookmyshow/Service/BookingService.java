@@ -34,7 +34,7 @@ public class BookingService {
         User user=userRepository.findById(userId).get();
         // get all ShowSeat from showSeatIds
         List<ShowSeat> showSeatList = new ArrayList<>();
-        for(Long id: showSetId){
+       for(Long id: showSetId){
             showSeatList.add(showSeatRepository.findById(id).get());
         }
         // check whether seats are available or not

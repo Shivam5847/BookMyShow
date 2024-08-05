@@ -16,7 +16,7 @@ public class BookingController {
         this.bookingService = bookingService;
         this.showSeatRepository = showSeatRepository;
     }
-    @RequestMapping("/makebooking")
+    @PostMapping("/makebooking")
     public String createBooking(@RequestBody BookingRequestDto bookingRequestDto){
         String bookingId=bookingService.createBooking(bookingRequestDto.getShowId(),bookingRequestDto.getUserId(),
                 bookingRequestDto.getShowSeatId());
