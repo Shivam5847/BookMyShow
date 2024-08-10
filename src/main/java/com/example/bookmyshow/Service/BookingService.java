@@ -27,7 +27,7 @@ public class BookingService {
      }
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public String createBooking(Long showId, Long userId, List<Long> showSetId){
+    public Booking createBooking(Long showId, Long userId, List<Long> showSetId){
         //get show from showId
         Show show = showRepository.findById(showId).get();
         // get user form UserId
@@ -61,6 +61,8 @@ public class BookingService {
         booking.setAmount(20);
         bookingRepository.save(booking);
         user.getBookings().add(booking);
-        return booking.getBooking_Id();
+        return booking;
     }
+
+
 }

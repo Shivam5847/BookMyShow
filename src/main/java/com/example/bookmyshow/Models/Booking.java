@@ -20,5 +20,4 @@ public class Booking extends BaseModel{
     private List<ShowSeat> showSeats;
     @ManyToOne
     private Show show;
-
 }
