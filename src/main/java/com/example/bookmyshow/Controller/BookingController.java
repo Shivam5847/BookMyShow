@@ -8,12 +8,9 @@ import com.example.bookmyshow.Models.ShowSeatStatus;
 import com.example.bookmyshow.Repository.ShowSeatRepository;
 import com.example.bookmyshow.Service.BookingService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.SendResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/bms")
@@ -38,7 +35,10 @@ public class BookingController {
         bookingEvent.setShowId(booking.getShow().getId());
         bookingEvent.setType("BOOKING-CREATED");
         bookingEvent.setUserId(booking.getUser().getId());
-        kafkaTemplate.send("new-booking", bookingEvent);
+      //  Message message= (Message) MessageBuilder.withPayload(bookingEvent)
+      //          .setHeader(KafkaHeaders.TOPIC,"new-booking").build();
+        //kafkaTemplate.send((ProducerRecord<String, BookingEvent>) message);
+        kafkaTemplate.send("new-booking",bookingEvent);
         return booking.getBooking_Id();
     }
 
@@ -49,4 +49,5 @@ public class BookingController {
           showSeatRepository.save(showSeat);
           return "done";
     }
+
 }
