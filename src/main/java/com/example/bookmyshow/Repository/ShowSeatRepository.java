@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface ShowSeatRepository extends JpaRepository<ShowSeat, Long> {
     ShowSeat save(ShowSeat showSeat);
     Optional<ShowSeat> findById(Long seatId);
+    //ShowSeat findbyBooking_Id(Long bookingId);
 }

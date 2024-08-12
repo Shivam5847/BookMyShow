@@ -16,7 +16,7 @@ public class Booking extends BaseModel{
     private int amount;
     @Enumerated(EnumType.ORDINAL)
     private BookingStatus bookingStatus;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<ShowSeat> showSeats;
     @ManyToOne
     private Show show;

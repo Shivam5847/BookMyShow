@@ -5,23 +5,34 @@ import com.example.bookmyshow.Event.BookingEvent;
 import com.example.bookmyshow.Models.Booking;
 import com.example.bookmyshow.Models.ShowSeat;
 import com.example.bookmyshow.Models.ShowSeatStatus;
+import com.example.bookmyshow.Repository.BookingRepository;
 import com.example.bookmyshow.Repository.ShowSeatRepository;
 import com.example.bookmyshow.Service.BookingService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/bms")
 public class BookingController {
+   private BookingRepository bookingRepository;
+    @PostMapping("/{id}")
+    public List<ShowSeat> getshowseat(@PathVariable("id") Long id){
+       // ShowSeat showSeat=showSeatRepository.findbyBooking_Id(id);
+       // List<ShowSeat> showSeatList=bookingRepository.findAllByShowSeatsById(id);
+      //  return showSeatList;
+        return null;
+    }
     private final BookingService bookingService;
     private final ShowSeatRepository showSeatRepository;
     private KafkaTemplate<String, BookingEvent> kafkaTemplate;
-    public BookingController(BookingService bookingService, ShowSeatRepository showSeatRepository, KafkaTemplate<String, BookingEvent> kafkaTemplate) {
+    public BookingController(BookingService bookingService, ShowSeatRepository showSeatRepository, KafkaTemplate<String, BookingEvent> kafkaTemplate,BookingRepository bookingRepository) {
         this.bookingService = bookingService;
         this.showSeatRepository = showSeatRepository;
         this.kafkaTemplate = kafkaTemplate;
+        this.bookingRepository = bookingRepository;
         //this.objectMapper = objectMapper;
     }
     @PostMapping("/makebooking")
