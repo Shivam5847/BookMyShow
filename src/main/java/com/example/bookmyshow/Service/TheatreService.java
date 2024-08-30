@@ -25,11 +25,11 @@ public class TheatreService {
     }
 
 
-    public Theatre addTheatre(String theatre_name){
+    public Theatre addTheatre(String theatre_name,String cityName){
                  Optional<Theatre> optionalTheatre=theatreRepository.findByName(theatre_name);
                  if(!optionalTheatre.isEmpty()) return optionalTheatre.get();
                   String theatre_id= UUID.randomUUID().toString();
-                  Theatre theatre = new Theatre(theatre_id,theatre_name);
+                  Theatre theatre = new Theatre(theatre_id,theatre_name,cityName);
                  return  theatreRepository.save(theatre);
         }
 

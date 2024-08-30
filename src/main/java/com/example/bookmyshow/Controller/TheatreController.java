@@ -10,7 +10,6 @@ import com.example.bookmyshow.Repository.ScreenRepository;
 import com.example.bookmyshow.Repository.TheatreRepository;
 import com.example.bookmyshow.Service.TheatreService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 
 @RestController
@@ -27,7 +26,7 @@ public class TheatreController {
 
          @PostMapping("/addTheatre")
          public Theatre addTheatre(@RequestBody TheatreAddRequestDTO theatreAddRequestDTO) {
-                  return theatreService.addTheatre(theatreAddRequestDTO.getTheatre_name());
+                  return theatreService.addTheatre(theatreAddRequestDTO.getTheatre_name(),theatreAddRequestDTO.getCityName());
         }
         @PostMapping("/addScreen")
         public Screen addScreen(@RequestBody ScreenAddRequestDTO screenAddRequestDTO){

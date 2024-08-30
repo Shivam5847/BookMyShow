@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface ShowRepository extends JpaRepository<Show, Long> {
     Show save(Show show);
     Optional<Show> findById(Long id);
+    Optional<Show> findByShowId(String id);
 }

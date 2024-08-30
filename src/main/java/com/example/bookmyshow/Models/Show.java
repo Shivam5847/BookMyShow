@@ -14,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Show extends BaseModel{
-    private String show_Id;
+    private String showId;
     @ManyToOne
     private Movie movie;
     @ManyToOne

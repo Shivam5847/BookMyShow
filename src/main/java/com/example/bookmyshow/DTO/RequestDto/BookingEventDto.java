@@ -5,7 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TheatreAddRequestDTO {
-    private String theatre_name;
-    private String cityName;
+public class BookingEventDto {
+    private String bookingId;
 }

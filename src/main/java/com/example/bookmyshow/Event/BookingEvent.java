@@ -8,7 +8,7 @@ import lombok.Setter;
 public class BookingEvent {
     private String type;
     private Long id;
-    private String booking_id;
+    private String bookingId;
     private int amount;
     private Long showId;
     private Long userId;

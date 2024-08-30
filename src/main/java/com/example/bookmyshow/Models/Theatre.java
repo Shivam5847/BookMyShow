@@ -14,14 +14,16 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 public class Theatre extends BaseModel{
-    public Theatre(String theatre_Id, String name){
+    public Theatre(String theatre_Id, String name,String cityName){
         this.theatre_Id=theatre_Id;
         this.name=name;
+        this.cityName=cityName;
         this.shows=new ArrayList<Show>();
     }
     private String theatre_Id;
     private String name;
     @OneToMany
     private List<Show> shows;
+    private String cityName;
 
 }

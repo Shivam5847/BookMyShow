@@ -37,28 +37,26 @@ public class BookingService {
        for(Long id: showSetId){
             showSeatList.add(showSeatRepository.findById(id).get());
         }
-        // check whether seats are available or not
-        for(ShowSeat showSeat: showSeatList){
-            if( showSeat.getShowSeatStatus().equals(ShowSeatStatus.BOOKED)) throw new RuntimeException("seats are already booked");
-        }
-
-        //if seats are available then block the seats
+       // check if seats are available or not
         for(ShowSeat showSeat: showSeatList){
             if(showSeat.getShowSeatStatus().equals(ShowSeatStatus.BOOKED)
             || showSeat.getShowSeatStatus().equals(ShowSeatStatus.BLOCKED)) throw new RuntimeException("seats are already booked");
         }
-
+        //if seats are available then block the seats
+        int total_price=0;
         for(ShowSeat showSeat: showSeatList){
+            total_price+=showSeat.getPrice();
             showSeat.setShowSeatStatus(ShowSeatStatus.BLOCKED);
         }
 
+        // create the Booking
         Booking booking=new Booking();
         booking.setShow(show);
         booking.setUser(user);
         booking.setBookingStatus(BookingStatus.PENDING);
         booking.setShowSeats(showSeatList);
-        booking.setBooking_Id(UUID.randomUUID().toString().toUpperCase());
-        booking.setAmount(20);
+        booking.setBookingId(UUID.randomUUID().toString().toUpperCase());
+        booking.setAmount(total_price);
         bookingRepository.save(booking);
         user.getBookings().add(booking);
         return booking;

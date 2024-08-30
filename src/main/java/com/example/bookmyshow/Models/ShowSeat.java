@@ -14,9 +14,10 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 public class ShowSeat extends BaseModel{
-    public ShowSeat(Show show,Seat seat) {
+    public ShowSeat(Show show,Seat seat,int price) {
         this.show = show;
         this.seat = seat;
+        this.price=price;
         this.showSeatStatus=ShowSeatStatus.EMPTY;
         this.blockedAt=null;
     }
@@ -26,5 +27,6 @@ public class ShowSeat extends BaseModel{
     private Seat seat;
     @Enumerated(EnumType.ORDINAL)
     private ShowSeatStatus showSeatStatus;
+    private int price;
     private Date blockedAt;
 }
